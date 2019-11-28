@@ -11,7 +11,11 @@ const Logger = (Vue, options) => {
             },
             debug(msg='', opts){
                 this.log(msg,'debug',opts)
-            }
+            },
+            domlog (msg = '') {
+                // eslint-disable-next-line no-console
+                console['log'](`${msg}\n`)
+            },
         }
     })
 }

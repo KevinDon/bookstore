@@ -74,6 +74,7 @@ module.exports = {
             'D:\\workspace\\bookstore\\src\\assets\\css\\stylus\\global.styl'
           ],
           preProcessor: 'stylus'
-        }
+        },
+        
     }
 };

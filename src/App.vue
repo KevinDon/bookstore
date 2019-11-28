@@ -9,7 +9,6 @@
   import Tabs from "@/components/Tabs.vue"
   export default {
   name: 'app',
-
   mounted () {
     let vm = this;
     vm.$logger.log('Controller framework' , 'info', this);
@@ -19,6 +18,7 @@
 </script>
 <style  rel="stylesheet" >
   @import 'http:////at.alicdn.com/t/font_1533734_ojsyqcgwwrc.css'; /*引入阿里样式*/
+  /*@import './mint-ui/lib/style.css'; !*引入阿里样式*!*/
 </style>
 <style>
 #app {
