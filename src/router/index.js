@@ -3,8 +3,6 @@ import Router from 'vue-router'
 import customRouter from '@/components/router.js'
 
 Vue.use(Router);
-
-// Vue.$logger.log(customRouter);
 export default new Router({
     mode: 'history',
     //base: __dirname,

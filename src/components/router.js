@@ -1,5 +1,4 @@
 import Configs from '@/lib/sysConfig'
-
 const router = [];
 //  动态加载路由
 for (let index in Configs.system.router.pages) {
@@ -8,9 +7,7 @@ for (let index in Configs.system.router.pages) {
         path: item.path,
         name: item.name,
         meta: {...item, title:item.title},
-        components: {
-            page: () => import('./' + item.component_name)
-        }
+        component: () => import('_components/' + item.component_name)
     })
 }
 export default router
