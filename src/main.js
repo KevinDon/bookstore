@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from './router'
 import App from './App.vue'
 import Logger from '@/core/plugins/Logger'
-import Mock from '@/mock/index'
+// import Mock from '@/mock/index'
 import Mint from 'mint-ui';
 
 // import MuseUI from 'muse-ui';
@@ -16,7 +16,7 @@ Vue.use(Mint);
 Vue.use(Logger);
 
 //加载Mock模块
-Vue.use(Mock);
+// Vue.use(Mock);
 
 
 Vue.config.productionTip = false;

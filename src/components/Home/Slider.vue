@@ -1,8 +1,8 @@
 <template>
     <mt-swipe :auto="4000" @change="imgChange">
-        <mt-swipe-item>1</mt-swipe-item>
-        <mt-swipe-item>2</mt-swipe-item>
-        <mt-swipe-item>3</mt-swipe-item>
+            <mt-swipe-item v-for="(sliderimage, _index) in sliderImages" :key="sliderimage.id">
+                <img :class="_index" :src="sliderimage.url" :alt="sliderimage.alt" :title="sliderimage.title" >
+            </mt-swipe-item>
     </mt-swipe>
 </template>
 
@@ -11,7 +11,26 @@
         name: "Slider",
         data (){
             return {
-                sliderImages: []
+                sliderImages: [
+                    {
+                        id:1,
+                        url: require('../../../static/images/sliderImages/bookstore_01.jpg'),
+                        alt:'天帝纪元',
+                        title:'天帝纪元'
+                    },
+                    {
+                        id:2,
+                        url: require('../../../static/images/sliderImages/bookstore_02.jpg'),
+                        alt:'我在黄泉有座房',
+                        title:'天帝纪元'
+                    },
+                    {
+                        id:3,
+                        url: require('../../../static/images/sliderImages/bookstore_03.jpg'),
+                        alt:'超凡世界',
+                        title:'超凡世界'
+                    }
+                ]
             }
         },
         methods: {
@@ -25,15 +44,8 @@
 
 <style scoped lang="stylus">
     .mint-swipe
-        height: 200px;
+        height: 120px;
         .mint-swipe-item
-            &:nth-child(1)
-                background-color:red;
-
-            &:nth-child(2)
-                background-color:blue;
-
-            &:nth-child(3)
-                background-color:lightblue;
-
+            & > img
+                width: 100%;
 </style>
