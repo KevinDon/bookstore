@@ -20,7 +20,7 @@
                 </div>
                 <div>购物车</div>
             </router-link>
-            <router-link :to="{name:'account',params:{user:'xu'}}" tag="li">
+            <router-link :to="{name:'Account',params:{user:'Kevin'}}" tag="li">
                 <div>
                     <i class="icon iconfont icon-account"></i>
                 </div>

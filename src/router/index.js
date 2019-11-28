@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Index'
+import Home from '@/components/Home/Index'
 import Banner from '@/components/Banner/Banner'
 import Cart from '@/components/Cart/Cart'
 import Account from '@/components/Account/Account'
