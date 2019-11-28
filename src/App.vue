@@ -10,7 +10,8 @@
   export default {
   name: 'app',
   mounted () {
-
+    let vm = this;
+    vm.$logger.log('Controller framework' , 'info', this);
   },
     components: {Tabs}
   }

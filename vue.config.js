@@ -45,14 +45,15 @@ module.exports = {
     // see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
     pwa: {},
     // webpack配置
-    // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
+    // see https://cli.vuejs.org/zh/config/#chainwebpack
     chainWebpack: config => {
         //路径配置
         config.resolve.alias
-            .set('assets', resolve('src/assets'))
-            .set('styles', resolve('src/assets/styles'))
             .set('@', resolve('src'))
-            .set('static', 'static')
+            .set('_components',resolve('src/components'))
+            .set('_assets', resolve('src/assets'))
+            .set('_styles', resolve('src/assets/styles'))
+            .set('_static', resolve('static'))
     },
 
     // webpack-dev-server 相关配置
