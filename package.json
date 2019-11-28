@@ -1,0 +1,81 @@
+{
+  "name": "bookstore",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Book Store project",
+  "author": "Kevin <tangjie_2056@outlook.com>",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "chart.js": "^2.8.0",
+    "core-js": "^3.3.2",
+    "mint-ui": "^2.2.13",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
+    "vue": "^2.6.10",
+    "vue-i18n": "^8.15.0",
+    "vue-lodash": "^2.0.2",
+    "vue-raven": "^1.0.3",
+    "vue-router": "^3.0.1",
+    "vue2-editor": "^2.10.2",
+    "vuelidate": "^0.7.4",
+    "vuex": "^3.1.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-plugin-eslint": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "autoprefixer": "^7.1.2",
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^10.0.3",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-jest": "^25.0.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-component": "^1.1.1",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-dynamic-import-webpack": "^1.1.0",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-plugin-transform-vue-jsx": "^3.5.0",
+    "babel-preset-env": "^1.3.2",
+    "babel-preset-stage-2": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "style-resources-loader": "^1.3.2",
+    "vue-cli-plugin-style-resources-loader": "^0.1.4",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.41.2",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-dev-server": "^2.9.1",
+    "webpack-merge": "^4.1.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
