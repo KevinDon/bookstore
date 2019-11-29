@@ -75,7 +75,7 @@ const accountData = () => {
         last_name: 'Don',
         email:'kevincn.tang@outlook.com',
         department:'IT - Frontend'
-    }]
+    }];
 
     return {
         status: 200,
