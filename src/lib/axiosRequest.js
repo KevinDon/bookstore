@@ -23,7 +23,6 @@ let ajaxAxios = new axios.create({
   //   username: configs.server.api.auth.username || 'admin',
   //   password: configs.server.api.auth.password || 'admin'
   // },
-
 });
 // if (process.env.NODE_ENV !== "production") {
 //   ajaxAxios.defaults.headers.common['Authorization'] = 'Basic YWRtaW46YWRtaW4='
@@ -36,9 +35,11 @@ let ajaxAxios = new axios.create({
 ajaxAxios.interceptors.request.use(config => {
   //   请求之前,拿cookies中的token作为验证字段
   let _authToken = 'Token ' + window.$cookies.get('token');
-  let _config = config.headers.common['Authorization'] = _authToken;
+  // let _config = config.headers.common['Authorization'] = _authToken;
+  config.headers.common['Authorization'] = _authToken;
   return config;
 });
+
 // 拦截响应response，并做一些错误处理
 ajaxAxios.interceptors.response.use(
   response => {
@@ -53,14 +54,15 @@ ajaxAxios.interceptors.response.use(
         status = '成功';
       }
       //  ajax反馈输出
+      // eslint-disable-next-line no-console
       console.info('%cAjax' + status + '%cMsg ' + response.data.msg + '%cAt ' + new Date().toLocaleString() + ' %c', 'background:' + (response.data.code === 1 ? '#5dbe3b' : 'orange') + ';color:white;border-radius:.5em 0 0 .5em;padding-left:1em;padding-right:1em', 'background:' + (response.data.code === 1 ? '#4e89ea' : 'orange') + ';color:white;padding-left:1em;padding-right:1em', 'background:' + (response.data.code === 1 ? '#c7c7ff' : 'orange') + ';color:white;border-radius:0 .5em .5em 0;padding-left:1em;padding-right:1em', response.data.data);
       return response.data;
     } else {
       // @todo 修复交互链接失败
-      const err = new Error(data.description);
-      err.data = data;
-      err.response = response;
-      throw err
+      // const err = new Error(data.description);
+      // err.data = data;
+      // err.response = response;
+      // throw err
     }
   },
   err => {
@@ -119,10 +121,12 @@ ajaxAxios.interceptors.response.use(
         err.message = '无法连接服务器';
       }
     } else {
+      throw err
 
     }
 
-    !!err.message ? console.error(err.message) : '';
+    // eslint-disable-next-line no-console
+    !err.message ? console.error(err.message) : '';
     return Promise.reject(err)
   }
 );

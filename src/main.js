@@ -2,21 +2,19 @@ import Vue from 'vue'
 import Router from './router'
 import App from './App.vue'
 import Logger from '@/core/plugins/Logger'
-// import Mock from '@/mock/index'
+import Mock from '@/mock/index'
 import Mint from 'mint-ui';
+import VueCookies from 'vue-cookies'
 
-// import MuseUI from 'muse-ui';
-// import 'muse-ui/dist/muse-ui.css';
-
-//注册 MuseUI
-// Vue.use(MuseUI);
+//注册 MintUI
 Vue.use(Mint);
 
 //加载日志函数
 Vue.use(Logger);
 
+Vue.use(VueCookies);
 //加载Mock模块
-// Vue.use(Mock);
+Vue.use(Mock);
 
 
 Vue.config.productionTip = false;

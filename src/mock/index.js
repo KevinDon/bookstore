@@ -1,6 +1,6 @@
+const  sysConfigs = require('@/lib/sysConfig');
 const Mock = require('mockjs'); // 获取mock对象
 const Random = Mock.Random; // 获取random对象，随机生成各种数据，具体请翻阅文档
-const domain = 'http://localhost:8080 '; // 定义默认域名，随便写
 const code = 200; // 返回的状态码
 
 const LoginData = req => {
@@ -25,47 +25,36 @@ const LoginData = req => {
     }
 }
 
-const ProductData = req => {
-    let products = []
+const sliderData = req => {
+    // eslint-disable-next-line no-console
+    console.log(req);
+    let data = [{
+            id: Random.increment(),
+            url: require('_static/images/sliderImages/bookstore_01.jpg'),
+            alt:'天帝纪元',
+            title:'天帝纪元'
+        },
+        {
+            id: Random.increment(),
+            url: require('_static/images/sliderImages/bookstore_02.jpg'),
+            alt:'我在黄泉有座房',
+            title:'天帝纪元'
+        },
+        {
+            id: Random.increment(),
+            url: require('_static/images/sliderImages/bookstore_03.jpg'),
+            alt:'超凡世界',
+            title:'超凡世界'
+        }];
 
-    for (let i = 0; i < 50; i++) {
-        let product = {
-            descript: Random.title(),
-            sku: Random.cname(),
-            shopifyprice: Random.float(0, 50, 0, 2),
-            costprice: Random.float(50, 100, 0, 2),
-            images: '/static/test.png'
-        }
-        products.push(product)
-    }
-
-    // 返回状态码和文章数据posts
+    // 返回状态码和data数据
     return {
-        code,
-        products
+        status: 200,
+        success: true,
+        msg:'The query is successful',
+        data: data
     }
 }
-//
-// const ProductData = req => {
-//   let products = []
-//
-//   form (let i = 0; i < 50; i++) {
-//     let product = {
-//       descript: Random.title(),
-//       sku: Random.cname(),
-//       shopifyprice: Random.float(0, 50, 0, 2),
-//       costprice: Random.float(50, 100, 0, 2),
-//       images: '/static/test.png'
-//     }
-//     products.push(product)
-//   }
-//
-//   // 返回状态码和文章数据posts
-//   return {
-//     code,
-//     products
-//   }
-// }
 
 const accountData = () => {
     let data = [{
@@ -97,6 +86,6 @@ const accountData = () => {
 }
 
 // 定义请求链接，类型，还有返回数据
-Mock.mock(`${domain}/login`, 'post', LoginData);
-Mock.mock(`${domain}/api/products`, 'post', ProductData);
-Mock.mock('http://localhost:8080/api/accounts/list', 'get', accountData);
+Mock.mock(`${sysConfigs.default.server.api.host}/login/`, 'post', LoginData);
+Mock.mock(`${sysConfigs.default.server.api.host}/sliderimages/`, 'post', sliderData);
+Mock.mock('http://localhost:8080/api/accounts/list/', 'get', accountData);
