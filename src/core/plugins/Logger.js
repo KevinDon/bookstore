@@ -12,9 +12,9 @@ const Logger = (Vue, options) => {
             debug(msg='', opts){
                 this.log(msg,'debug',opts)
             },
-            domlog (msg = '') {
+            domlog (msg = '', data = {}) {
                 // eslint-disable-next-line no-console
-                console['log'](`${msg}\n`)
+                console['log'](msg, data)
             },
         }
     })

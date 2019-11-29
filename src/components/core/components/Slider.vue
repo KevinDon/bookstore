@@ -32,7 +32,6 @@
             },
             getRemoteData: async function(){
                 await utils.apiRequest(this.getUrl, {}).then(response =>{
-                    this.$logger.domlog(response);
                     this.sliderImages = response.data;
                 })
             }
