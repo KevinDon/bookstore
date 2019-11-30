@@ -27,7 +27,6 @@ const LoginData = req => {
 
 const sliderData = req => {
     // eslint-disable-next-line no-console
-    console.log(req);
     let data = [{
             id: Random.increment(),
             url: require('_static/images/sliderImages/bookstore_01.jpg'),
