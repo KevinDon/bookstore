@@ -2,7 +2,7 @@
     <div class="index">
         这是首页
         <Slider
-                getUrl="/sliderimages/"
+                getUrl="base/books/searchImages.do/"
         />
     </div>
 </template>

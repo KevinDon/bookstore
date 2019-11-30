@@ -1,7 +1,7 @@
 <template>
     <mt-swipe :auto="4000" @change="imgChange">
             <mt-swipe-item v-for="(sliderimage, _index) in sliderImages" :key="sliderimage.id">
-                <img :class="_index" :src="sliderimage.url" :alt="sliderimage.alt" :title="sliderimage.title" >
+                <img :class="_index" :src="sliderimage.bookImg" :alt="sliderimage.bookName" :title="sliderimage.bookName" >
             </mt-swipe-item>
     </mt-swipe>
 </template>
@@ -32,9 +32,10 @@
             },
             getRemoteData: async function(){
                 await utils.apiRequest(this.getUrl, {}).then(response =>{
-                    this.$logger.domlog(response);
                     this.sliderImages = response.data;
-                })
+                }).catch(err => {
+                    this.$logger.domlog(err);
+                });
             }
         }
     }

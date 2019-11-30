@@ -1,7 +1,8 @@
 {
   "server": {
     "api": {
-      "host": "http://127.0.0.1/api",
+      "host2": "http://113.65.21.73:86/shangjieti",
+      "host": "/shangjieti",
       "auth": {
         "username": "admin",
         "password": "admin"

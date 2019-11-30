@@ -17,7 +17,7 @@ const utils = {
         }).then(res => {
             // eslint-disable-next-line no-console
             console.log('交互完毕:', res);
-            if (res.status != 200) {
+            if (res.code != 200) {
                 throw res.msg
             }
             return res
