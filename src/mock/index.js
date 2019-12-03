@@ -25,30 +25,30 @@ const LoginData = req => {
     }
 }
 
-const sliderData = req => {
+const sliderData = () => {
     // eslint-disable-next-line no-console
     let data = [{
             id: Random.increment(),
-            url: require('_static/images/sliderImages/bookstore_01.jpg'),
-            alt:'天帝纪元',
+            bookImg: require('_static/images/sliderImages/bookstore_01.jpg'),
+            bookName:'天帝纪元',
             title:'天帝纪元'
         },
         {
             id: Random.increment(),
-            url: require('_static/images/sliderImages/bookstore_02.jpg'),
-            alt:'我在黄泉有座房',
+            bookImg: require('_static/images/sliderImages/bookstore_02.jpg'),
+            bookName:'我在黄泉有座房',
             title:'天帝纪元'
         },
         {
             id: Random.increment(),
-            url: require('_static/images/sliderImages/bookstore_03.jpg'),
-            alt:'超凡世界',
+            bookImg: require('_static/images/sliderImages/bookstore_03.jpg'),
+            bookName:'超凡世界',
             title:'超凡世界'
         }];
 
     // 返回状态码和data数据
     return {
-        status: 200,
+        code: 200,
         success: true,
         msg:'The query is successful',
         data: data
@@ -86,5 +86,5 @@ const accountData = () => {
 
 // 定义请求链接，类型，还有返回数据
 Mock.mock(`${sysConfigs.default.server.api.host}/login/`, 'post', LoginData);
-Mock.mock(`${sysConfigs.default.server.api.host}/sliderimages/`, 'post', sliderData);
+Mock.mock(`${sysConfigs.default.server.api.host}/base/books/searchImages.do/`, 'post', sliderData);
 Mock.mock('http://localhost:8080/api/accounts/list/', 'get', accountData);

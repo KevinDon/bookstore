@@ -63,16 +63,16 @@ module.exports = {
         port: 8080,
         https: false,
         hotOnly: false,
-        proxy: {
-            '/shangjieti': {
-                target: 'http://113.65.21.73:86/shangjieti', //对应自己的接口
-                changeOrigin: true,
-                ws: true,
-                pathRewrite: {
-                    '^/shangjieti': ''
-                }
-            }
-        }, // 设置代理
+       // proxy: {
+            // '/shangjieti': {
+            //     target: 'http://113.65.21.73:86/shangjieti', //对应自己的接口
+            //     changeOrigin: true,
+            //     ws: true,
+            //     pathRewrite: {
+            //         '^/shangjieti': ''
+            //     }
+            // }
+        //}, // 设置代理
     },
 
     //其他配置....
