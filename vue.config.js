@@ -3,10 +3,10 @@
  * *@author Kevin
  * *@describe vue-cli 3.x配置文件
  */
-'use strict'
+'use strict';
+import configs from '@/lib/sysConfig'
 // vue.config.js
 const path = require('path');
-
 
 function resolve (dir) {
     return path.join(__dirname, dir)
@@ -63,16 +63,16 @@ module.exports = {
         port: 8080,
         https: false,
         hotOnly: false,
-       // proxy: {
-            // '/shangjieti': {
-            //     target: 'http://113.65.21.73:86/shangjieti', //对应自己的接口
-            //     changeOrigin: true,
-            //     ws: true,
-            //     pathRewrite: {
-            //         '^/shangjieti': ''
-            //     }
-            // }
-        //}, // 设置代理
+       proxy: {
+            '/bookstore': {
+                target: 'http://59.42.42.188:86/shangjieti', //对应自己的接口
+                changeOrigin: true,
+                ws: true,
+                pathRewrite: {
+                    '^/bookstore': ''
+                }
+            }
+        }, // 设置代理
     },
 
     //其他配置....

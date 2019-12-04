@@ -1,9 +1,9 @@
 <template>
-    <div :class="componentClass">
+    <div>
         <mt-swipe :auto="4000" @change="imgChange">
             <mt-swipe-item v-for="(sliderimage, _index) in sliderImages" :key="sliderimage.id">
                 <img :class="_index" :src="sliderimage.bookImg" :alt="sliderimage.bookName" :title="sliderimage.bookName" >
-                <span v-show="is_show_title">{{sliderimage.bookName}}</span>
+                <span v-show="baseConf.isShowTitle">{{sliderimage.bookName}}</span>
             </mt-swipe-item>
         </mt-swipe>
     </div>
@@ -14,69 +14,76 @@
     export default {
         name: "Slider",
         props: {
-            // 外部定义api接口
-            getUrl: {
-                default: ''
+            // 接受外部组件参数
+            conf: {
+                type: Object,
+                default :() => {},
             },
-            isRemote : {
-                default: true
-            },
-            imagesData: {
-                type: Array,
-                default:  () => {
-                    return [];
-                }
-            },
-            case: {
-                type: String,
-                default: () => {
-                    // enumerate [cross, vertical]
-                    return 'cross'
-                }
-            },
-            is_show_title: {
-                type: Boolean,
-                default: false
-            }
         },
         data (){
             return {
                 sliderImages: [ ],
-                componentClass : ''
             }
         },
         mounted: function() {
             let me = this;
-            //初始化图片数据
-            if(me.isRemote){
-                me.getRemoteData();
-            }else{
-                me.sliderImages = me.imagesData
-            }
             //判断slider
-            me.componentClass = me.case === 'cross' ? 'slider_wrapper_cross' : 'slider_wrapper_vertical'
-
+            me.componentClass = me.case === 'cross' ? 'slider_wrapper_cross' : 'slider_wrapper_vertical';
+            //初始化图片数据
+            if(me.baseConf.isRemote){
+                me.getRemoteData(me.baseConf);
+            }else{
+                me.sliderImages = me.baseConf.imagesData
+            }
+        },
+        computed:{
+            // 初始化组件参数
+            baseConf() {
+                let conf = this.conf ? this.conf : {};
+                //接受外部定义参数
+                let defaultConf = {
+                    // 本地数据
+                    imagesData: [],
+                    //是否显示轮播图标题
+                    isShowTitle: false,
+                    // 是否远程
+                    isRemote : true,
+                    // 外部定义api接口
+                    getUrl: '',
+                    // 轮播类型
+                    //TODO
+                    // case: {
+                    //     type: String,
+                    //     default: () => {
+                    //         // enumerate [cross, vertical]
+                    //         return 'cross'
+                    //     }
+                    // },
+                    case: 'cross'
+                };
+                return Object.assign({}, defaultConf, conf)
+            }
         },
         methods: {
             imgChange: function(index){
-                let vm = this;
-                vm.$logger.domlog('切换Image' + index)
+                let me = this;
+                me.$logger.domlog('切换Image' + index)
             },
-            getRemoteData: async function(){
-                await utils.apiRequest(this.getUrl, {}).then(response =>{
-                    this.sliderImages = response.data;
+            getRemoteData: async function(conf){
+                let me = this;
+                await utils.apiRequest(conf.getUrl, {}).then(response =>{
+                    me.sliderImages = response.data;
                 }).catch(err => {
                     this.$logger.domlog(err);
                 });
             }
-        }
+        },
     }
 </script>
 
 <style scoped lang="stylus">
     .mint-swipe
         height: 120px;
-
         .mint-swipe-item
             & > img
                 width: 100%;
@@ -87,11 +94,4 @@
                 overflow: hidden;
                 max-height: 2.125rem;
                 margin: .5rem 0 .125rem;
-    .slider_wrapper_vertical
-        .mint-swipe
-            height: 150px;
-            .mint-swipe-item
-                width 100px
-                & > img
-                    width: 71px;
 </style>

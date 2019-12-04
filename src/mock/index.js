@@ -53,7 +53,7 @@ const sliderData = () => {
         msg:'The query is successful',
         data: data
     }
-}
+};
 
 const accountData = () => {
     let data = [{

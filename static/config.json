@@ -1,8 +1,8 @@
 {
   "server": {
     "api": {
-      "host": "http://127.0.0.1:8080/shangjieti",
-      "host1": "http://59.42.41.229:86/shangjieti",
+      "host": "http://127.0.0.1/bookstore",
+      "host1": "http://59.42.42.188:86/shangjieti",
       "host2": "/shangjieti",
       "auth": {
         "username": "admin",
