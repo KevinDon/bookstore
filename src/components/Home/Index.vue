@@ -80,8 +80,7 @@
                 bookName:'诡秘之主'
             }
         },
-        mounted: ()  => {
-
+        mounted: function()  {
             this.$nextTick(()=> {
                 let cancel = this.$refs.mtSearch.$el.querySelectorAll('.mint-searchbar-cancel')[0];
                 cancel.onclick = () => {
