@@ -5,12 +5,12 @@
                 <img :src="require('_static/images/logo.png')" alt="Book Store">
             </div>
            <div class="search">
-               <a href="javascript:void (0)" id="openSearchPopup" @click="openSearchPopup">
+               <a href="javascript:void (0)" id="searchPopup" @click="openSearchPopup">
                    <i class="icon iconfont icon-search"></i>
                    {{bookName}}
                </a>
            </div>
-            <div id="searchPopup" v-show="searchPopStatus">
+            <div id="searchForm" v-show="searchPopStatus">
                 <form action="">
                     <mt-search  v-model="commodityName" cancel-text="取消" placeholder="搜索"/>
                 </form>
@@ -80,11 +80,25 @@
                 bookName:'诡秘之主'
             }
         },
-        mounted: ()  => {},
+        mounted: ()  => {
+
+            this.$nextTick(()=> {
+                let cancel = this.$refs.mtSearch.$el.querySelectorAll('.mint-searchbar-cancel')[0];
+                cancel.onclick = () => {
+                    console.log('test');
+                    this.close()    // 取消事件
+                };
+            })
+        },
         computed: {},
         methods: {
-            openSearchPopup: () => {
+            openSearchPopup: function() {
+                // this.$set(this.searchPopStatus, 'searchPopStatus', !this.searchPopStatus);
                 this.searchPopStatus = !this.searchPopStatus;
+            },
+            closeSearchPopup: function() {
+                // this.$set(this.searchPopStatus, 'searchPopStatus', !this.searchPopStatus);
+                this.searchPopStatus = false;
             }
         },
         watch: {
@@ -115,4 +129,12 @@
                 color: #969ba3;
                 border-radius: .25rem;
                 background-color: #f5f5f5;
+        #searchForm
+            position: fixed;
+            z-index: 20;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
 </style>

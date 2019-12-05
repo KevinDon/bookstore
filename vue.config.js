@@ -4,7 +4,7 @@
  * *@describe vue-cli 3.x配置文件
  */
 'use strict';
-import configs from '@/lib/sysConfig'
+// import configs from '@/lib/sysConfig'
 // vue.config.js
 const path = require('path');
 
