@@ -54,6 +54,35 @@ const sliderData = () => {
         data: data
     }
 };
+const keywordData = () => {
+    // eslint-disable-next-line no-console
+    let data = [{
+            id: Random.increment(),
+            bookImg: require('_static/images/bestseller/bestseller_01.jpg'),
+            bookName:'天帝纪元',
+            title:'天帝纪元'
+        },
+        {
+            id: Random.increment(),
+            bookImg: require('_static/images/bestseller/bestseller_02.jpg'),
+            bookName:'我在黄泉有座房',
+            title:'天帝纪元'
+        },
+        {
+            id: Random.increment(),
+            bookImg: require('_static/images/bestseller/bestseller_03.jpg'),
+            bookName:'超凡世界',
+            title:'超凡世界'
+        }];
+
+    // 返回状态码和data数据
+    return {
+        code: 200,
+        success: true,
+        msg:'The query is successful',
+        data: data
+    }
+};
 
 const accountData = () => {
     let data = [{
@@ -87,4 +116,5 @@ const accountData = () => {
 // 定义请求链接，类型，还有返回数据
 Mock.mock(`${sysConfigs.default.server.api.host}/login/`, 'post', LoginData);
 Mock.mock(`${sysConfigs.default.server.api.host}/base/books/searchImages.do/`, 'post', sliderData);
+Mock.mock(`${sysConfigs.default.server.api.host}/base/books/searchKeyword.do/`, 'post', keywordData);
 Mock.mock('http://localhost:8080/api/accounts/list/', 'get', accountData);

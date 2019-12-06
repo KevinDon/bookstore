@@ -19,6 +19,7 @@
                 type: Object,
                 default :() => {},
             },
+            callback: {}
         },
         data (){
             return {
@@ -67,7 +68,7 @@
         methods: {
             imgChange: function(index){
                 let me = this;
-                me.$logger.domlog('切换Image' + index)
+                if(me.callback) me.callback(index); // 将参数传回父组件中的回调函数
             },
             getRemoteData: async function(conf){
                 let me = this;

@@ -22,7 +22,9 @@ module.exports = {
     // use the full build with in-browser compiler?
     // https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
     runtimeCompiler: false,
-    configureWebpack: () => {},
+    configureWebpack: () => {
+        devtool: 'source-map'
+    },
 
     // 生产环境是否生成 sourceMap 文件
     productionSourceMap: true,
@@ -60,7 +62,7 @@ module.exports = {
     devServer: {
         open: process.platform === 'dev',
         host: '0.0.0.0',
-        port: 8080,
+        port: 8081,
         https: false,
         hotOnly: false,
        proxy: {
